@@ -1,10 +1,7 @@
-    export default function Footer(){
+export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="container footer-inner">
-        <div>© {new Date().getFullYear()} Rudree Jewellers</div>
-        <div>Made with ❤️ — Contact: <a href="https://wa.me/919999999999">WhatsApp</a></div>
-      </div>
+    <footer className="bg-gray-900 text-white text-center py-6">
+      <p>© {new Date().getFullYear()} Rudree Jewellers. All Rights Reserved.</p>
     </footer>
   )
 }
