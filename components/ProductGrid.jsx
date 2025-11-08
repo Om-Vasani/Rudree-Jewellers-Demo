@@ -1,18 +1,35 @@
 import ProductCard from './ProductCard'
 
-const sample = [
-  { id:1, title:'Solitaire Gold Ring', price:'₹85,000', img:'/image/ring.jpg' },
-  { id:2, title:'Diamond Pendant', price:'₹120,000', img:'/image/pendant.jpg' },
-  { id:3, title:'Classic Bracelet', price:'₹95,000', img:'/image/bracelet.jpg' },
-  { id:4, title:'Stud Earrings', price:'₹22,000', img:'/image/ring.jpg' },
-  { id:5, title:'Kundan Necklace', price:'₹150,000', img:'/image/pendant.jpg' },
-  { id:6, title:'Gold Bangle', price:'₹45,000', img:'/image/bracelet.jpg' }
+const products = [
+  {
+    id: 1,
+    title: 'Gold Ring',
+    desc: '22K Gold • Premium Finish',
+    price: '₹55,000',
+    img: '/images/ring.jpg'
+  },
+  {
+    id: 2,
+    title: 'Diamond Pendant',
+    desc: '18K Gold • Certified Diamond',
+    price: '₹1,20,000',
+    img: '/images/pendant.jpg'
+  },
+  {
+    id: 3,
+    title: 'Gold Bracelet',
+    desc: '22K • Handcrafted Design',
+    price: '₹85,000',
+    img: '/images/bracelet.jpg'
+  }
 ]
 
-export default function ProductGrid(){
+export default function ProductGrid() {
   return (
-    <div className="product-grid wide">
-      {sample.map(p => <ProductCard key={p.id} {...p} />)}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+      {products.map((p) => (
+        <ProductCard key={p.id} product={p} />
+      ))}
     </div>
   )
 }
