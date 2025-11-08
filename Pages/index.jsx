@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic'
 
 const ChatBot = dynamic(() => import('../components/ChatBot'), { ssr: false })
 
-export default function Home(){
+export default function Home() {
   return (
     <>
       <Header />
