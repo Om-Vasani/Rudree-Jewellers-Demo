@@ -1,12 +1,12 @@
-export default function ProductCard({ product }) {
+import Image from 'next/image'
+
+export default function ProductCard({ title, desc, price, img }) {
   return (
-    <div className="bg-white shadow-md rounded-2xl overflow-hidden hover:scale-105 transition">
-      <img src={product.img} alt={product.title} className="w-full h-64 object-cover" />
-      <div className="p-4">
-        <h3 className="font-semibold text-lg">{product.title}</h3>
-        <p className="text-sm text-gray-600">{product.desc}</p>
-        <p className="mt-2 text-yellow-600 font-bold">{product.price}</p>
-      </div>
+    <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition p-4 flex flex-col">
+      <Image src={img} alt={title} width={400} height={300} className="rounded-xl object-cover" />
+      <h3 className="text-lg font-semibold mt-3 text-yellow-800">{title}</h3>
+      <p className="text-gray-600 text-sm">{desc}</p>
+      <p className="text-yellow-700 font-bold mt-2">{price}</p>
     </div>
   )
 }
