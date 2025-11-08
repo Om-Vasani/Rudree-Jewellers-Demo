@@ -4,10 +4,10 @@ import Image from 'next/image'
 export default function Header() {
   return (
     <header className="shadow bg-white sticky top-0 z-50">
-      <div className="container flex items-center justify-between py-4">
+      <div className="container flex items-center justify-between py-4 mx-auto">
         <Link href="/" className="flex items-center space-x-2">
           <Image
-            src="/images/logo.png"
+            src="https://via.placeholder.com/40x40.png?text=Logo"
             alt="Rudree Logo"
             width={40}
             height={40}
