@@ -1,21 +1,14 @@
-    import Link from 'next/link'
+import Link from 'next/link'
 
-export default function Header(){
+export default function Header() {
   return (
-    <header className="header">
-      <div className="container header-inner">
-        <div className="brand">
-          <img src="/images/logo.png" alt="Rudree" className="logo" />
-          <div>
-            <h1 className="brand-title">Rudree Jewellers</h1>
-            <p className="brand-sub">Handcrafted since 1995</p>
-          </div>
-        </div>
-        <nav className="nav">
-          <Link href="/">Home</Link>
-          <Link href="/products">Products</Link>
-          <Link href="/contact">Contact</Link>
-          <Link href="/admin">Admin</Link>
+    <header className="bg-white shadow-md sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
+        <img src="/images/logo.png" alt="Rudree Jewellers" className="h-10" />
+        <nav className="space-x-6 text-gray-700 font-medium">
+          <a href="/">Home</a>
+          <a href="/products">Products</a>
+          <a href="/contact">Contact</a>
         </nav>
       </div>
     </header>
