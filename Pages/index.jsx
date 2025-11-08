@@ -1,4 +1,4 @@
-    import Header from '../components/Header'
+import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Hero from '../components/Hero'
 import ProductGrid from '../components/ProductGrid'
