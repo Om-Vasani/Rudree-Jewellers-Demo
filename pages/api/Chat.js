@@ -1,32 +1,21 @@
 import axios from 'axios'
 
+// pages/api/chat.js
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
+  if (req.method !== 'POST') {
+    return res.status(200).json({ status: 'ready' })
+  }
 
   try {
-    const { messages } = req.body
-    if (!messages) return res.status(400).json({ error: 'No messages provided' })
+    const { message } = req.body || {}
 
-    const response = await axios.post(
-      'https://api.openai.com/v1/chat/completions',
-      {
-        model: 'gpt-4o-mini',
-        messages,
-        temperature: 0.7,
-        max_tokens: 800
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`
-        }
-      }
-    )
+    // DEMO: simple echo response
+    const reply = message ? `You said: ${message}` : 'Hi — send a message.'
 
-    const reply = response.data.choices?.[0]?.message?.content ?? 'No reply'
-    res.status(200).json({ reply })
-  } catch (error) {
-    console.error(error?.response?.data || error.message)
-    res.status(500).json({ error: 'OpenAI request failed' })
+    // If you want OpenAI integration, replace above with server-side call to OpenAI using process.env.OPENAI_API_KEY
+    return res.status(200).json({ reply })
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ error: 'Server error' })
   }
 }
