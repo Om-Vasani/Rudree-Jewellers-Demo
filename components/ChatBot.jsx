@@ -1,47 +1,36 @@
-import { useState, useRef, useEffect } from 'react'
-import axios from 'axios'
+import { useState } from 'react'
 
-export default function ChatBot(){
-  const [messages, setMessages] = useState([
-    { role: 'system', content: 'You are a helpful assistant for a jewellery store.' }
-  ])
-  const [input, setInput] = useState('')
-  const [loading, setLoading] = useState(false)
-  const ref = useRef(null)
+export default function ChatBot() {
+  const [message, setMessage] = useState('')
+  const [response, setResponse] = useState('')
 
-  useEffect(() => { if (ref.current) ref.current.scrollTop = ref.current.scrollHeight }, [messages])
-
-  const send = async () => {
-    if (!input.trim()) return
-    const userMsg = { role: 'user', content: input }
-    const newMsgs = [...messages, userMsg]
-    setMessages(newMsgs)
-    setInput('')
-    setLoading(true)
-
-    try {
-      const resp = await axios.post('/api/chat', { messages: newMsgs })
-      const botReply = resp.data.reply
-      setMessages(prev => [...prev, { role: 'assistant', content: botReply }])
-    } catch (err) {
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Sorry, something went wrong.' }])
-    } finally {
-      setLoading(false)
-    }
+  const sendMessage = async () => {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message })
+    })
+    const data = await res.json()
+    setResponse(data.reply)
   }
 
   return (
-    <div className="chatbot themed">
-      <div className="messages" ref={ref}>
-        {messages.filter(m => m.role !== 'system').map((m,i)=>(
-          <div key={i} className={m.role==='user' ? 'user' : 'bot'}>{m.content}</div>
-        ))}
-      </div>
-
-      <div className="chat-input">
-        <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter' && send()} placeholder={loading? 'Waiting...':'Ask about products, custom orders...'} disabled={loading}/>
-        <button onClick={send} disabled={loading}>Send</button>
-      </div>
+    <div className="fixed bottom-4 right-4 bg-white border shadow-xl rounded-xl p-4 w-72">
+      <h3 className="font-bold text-gray-700">💬 Chat with Rudree AI</h3>
+      <textarea
+        className="w-full border mt-2 p-2 rounded-md"
+        rows="2"
+        placeholder="Ask about jewellery..."
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <button
+        onClick={sendMessage}
+        className="bg-yellow-500 text-white w-full py-2 rounded-md mt-2 hover:bg-yellow-600"
+      >
+        Send
+      </button>
+      {response && <p className="mt-3 text-gray-700">{response}</p>}
     </div>
   )
 }
