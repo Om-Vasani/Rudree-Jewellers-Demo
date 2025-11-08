@@ -1,34 +1,41 @@
-import ProductCard from './ProductCard'
+import Image from 'next/image'
 
 const products = [
   {
     id: 1,
-    title: 'Gold Ring',
-    desc: '22K Gold • Handcrafted Design',
-    price: '₹45,000',
-    img: '/image/ring.jpg',
+    title: "Solitaire Diamond Ring",
+    price: "₹85,000",
+    img: "/images/ring.jpg",
   },
   {
     id: 2,
-    title: 'Diamond Pendant',
-    desc: '18K Gold • Certified Diamond',
-    price: '₹85,000',
-    img: '/image/pendant.jpg',
+    title: "Gold Pendant",
+    price: "₹45,000",
+    img: "/images/pendant.jpg",
   },
   {
     id: 3,
-    title: 'Gold Bracelet',
-    desc: '22K Gold • Elegant Finish',
-    price: '₹65,000',
-    img: '/image/bracelet.jpg',
+    title: "Gold Bracelet",
+    price: "₹55,000",
+    img: "/images/bracelet.jpg",
   },
 ]
 
 export default function ProductGrid() {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {products.map((p) => (
-        <ProductCard key={p.id} {...p} />
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {products.map(product => (
+        <div key={product.id} className="border p-4 rounded shadow">
+          <Image
+            src={product.img}
+            alt={product.title}
+            width={300}
+            height={300}
+            className="object-cover rounded"
+          />
+          <h3 className="mt-2 font-semibold">{product.title}</h3>
+          <p className="text-yellow-700 font-bold">{product.price}</p>
+        </div>
       ))}
     </div>
   )
