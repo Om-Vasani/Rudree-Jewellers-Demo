@@ -3,15 +3,16 @@ import Image from 'next/image'
 export default function WhatsAppCTA() {
   return (
     <a
-      href="https://wa.me/1234567890"
+      href="https://wa.me/919999999999"
       target="_blank"
-      className="fixed bottom-4 right-4"
+      className="fixed bottom-5 right-5 z-50 hover:scale-110 transition-transform"
     >
       <Image
-        src="https://via.placeholder.com/60x60.png?text=WA"
-        alt="WhatsApp Contact"
+        src="/images/whatsapp.png"
+        alt="WhatsApp Chat"
         width={60}
         height={60}
+        className="rounded-full shadow-lg"
       />
     </a>
   )
