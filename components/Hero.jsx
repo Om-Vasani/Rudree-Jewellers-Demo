@@ -2,17 +2,22 @@ import Image from 'next/image'
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-96">
+    <section className="relative w-full h-[70vh]">
       <Image
-        src="https://via.placeholder.com/1200x400.png?text=Hero+Banner"
-        alt="Hero Banner"
+        src="/images/hero-banner.webp"
+        alt="Rudree Jewellers Hero Banner"
         fill
-        className="object-cover"
+        className="object-cover brightness-[0.7]"
       />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <h1 className="text-4xl md:text-6xl font-bold text-white text-center">
-          Welcome to Rudree Jewellers
-        </h1>
+      <div className="absolute inset-0 flex items-center justify-center text-center">
+        <div>
+          <h1 className="text-5xl md:text-7xl font-bold text-yellow-400 drop-shadow-lg">
+            Rudree Jewellers
+          </h1>
+          <p className="mt-4 text-white text-xl">
+            Black & Gold Luxury Collection
+          </p>
+        </div>
       </div>
     </section>
   )
