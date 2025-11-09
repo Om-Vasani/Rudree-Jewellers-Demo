@@ -8,7 +8,7 @@ export default function WhatsAppCTA() {
       className="fixed bottom-[90px] right-5 z-50 hover:scale-110 transition-transform"
     >
       <Image
-        src="/images/whatsapp.png"
+        src="/images/whatsapp.svg"
         alt="WhatsApp Chat"
         width={60}
         height={60}
