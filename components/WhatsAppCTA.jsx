@@ -10,8 +10,8 @@ export default function WhatsAppCTA() {
       <Image
         src="/images/whatsapp.png"
         alt="WhatsApp Chat"
-        width={60}
-        height={60}
+        width={30}
+        height={30}
         className="rounded-full shadow-lg"
       />
     </a>
