@@ -5,7 +5,7 @@ export default function Header() {
     <header className="shadow bg-white sticky top-0 z-50">
       <div className="container flex items-center justify-between py-4 mx-auto">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-xl font-semibold text-yellow-700">
+          <span className="text-lg font-semibold text-yellow-700">
             Rudree Jewellers
           </span>
         </Link>
